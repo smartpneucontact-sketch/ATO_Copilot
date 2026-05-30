@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATO Copilot — AI-assisted enterprise governance triage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='%234f7cff'/></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a href="/" class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-name">ATO Copilot</span>
+    </a>
+    <nav class="topnav">
+      <a href="#workbench" data-scroll>Workbench</a>
+      <a href="#about" data-scroll>About</a>
+      <a href="/docs" target="_blank">API</a>
+    </nav>
+    <span class="mode-pill" id="mode-pill">
+      <span class="mode-dot"></span>
+      <span id="mode-text">loading</span>
+    </span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Portfolio demo · for State Street</p>
+    <h1 class="hero-title">
+      ATO triage at the<br>
+      <span class="grad">speed of governance.</span>
+    </h1>
+    <p class="hero-sub">
+      Turn a free-text NTAP / ATO request into a <strong>structured governance package</strong> in
+      seconds: ATL status check, NIST 800-53 control mapping, reference-architecture review, risk
+      classification, cycle-time estimate, and a recommended approval decision — every claim cited
+      back to the source ATL entry, control family, or prior ATO.
+    </p>
+    <div class="hero-ctas">
+      <a href="#workbench" class="btn-primary" data-scroll>Try a request</a>
+      <a href="/docs" target="_blank" class="btn-ghost">API docs</a>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <span class="stat-label">Corpus</span>
+        <span class="stat-value" id="stat-corpus">…</span>
+        <span class="stat-help">governance chunks indexed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Model</span>
+        <span class="stat-value mono" id="stat-model">…</span>
+        <span class="stat-help">portable to Azure OpenAI</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Cost / request</span>
+        <span class="stat-value">~$0.07</span>
+        <span class="stat-help">at Sonnet 4.6 pricing</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Cycle time</span>
+        <span class="stat-value">~10s</span>
+        <span class="stat-help">vs. industry-typical 5–20 days</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="workbench">
+  <div class="container">
+    <div class="section-head">
+      <h2>Request workbench</h2>
+      <p>Pick a sample NTAP request or paste your own free-text. The agent retrieves the relevant
+      ATL entries, control families, architecture patterns, and prior ATO precedents — then drafts
+      a structured package you can route to InfoSec / ARB / delivery team.</p>
+    </div>
+
+    <div class="workbench">
+      <div class="pane input-pane">
+        <header class="pane-head">
+          <h3>Incoming NTAP / ATO request</h3>
+          <span class="muted">From a delivery team's submission form</span>
+        </header>
+
+        <div class="field">
+          <label>Sample request</label>
+          <select id="req-sample"></select>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Request ID</label>
+            <input id="req-id" type="text">
+          </div>
+          <div class="field">
+            <label>Date</label>
+            <input id="req-date" type="text">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Submitted by</label>
+            <input id="req-submitter" type="text">
+          </div>
+          <div class="field">
+            <label>Business unit</label>
+            <input id="req-bu" type="text">
+          </div>
+        </div>
+        <div class="field">
+          <label>Free-text description</label>
+          <textarea id="req-description" rows="9"></textarea>
+        </div>
+
+        <button id="req-submit" class="btn-primary btn-full">
+          <span class="btn-text">Triage request</span>
+          <span class="btn-spinner" hidden></span>
+        </button>
+        <div id="req-status" class="status" hidden></div>
+      </div>
+
+      <div class="pane output-pane">
+        <div class="empty-state" id="req-empty">
+          <div class="empty-icon">↗</div>
+          <h4>Awaiting request</h4>
+          <p>Click <em>Triage request</em> to watch the agent check the ATL, map controls, classify
+          risk, estimate cycle time, and draft a structured ATO package with citations.</p>
+        </div>
+        <div id="req-result" hidden></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="about">
+  <div class="container about-grid">
+    <div>
+      <h2>How it maps to State Street's stack</h2>
+      <p class="muted">The agent loop and the corpus contract are the durable parts. The surfaces
+        around them adapt to State Street's existing governance platforms — Flexera for ATL,
+        ServiceNow for workflow, Copilot Studio / Azure OpenAI for AI.</p>
+    </div>
+    <table class="map-table">
+      <thead><tr><th>This demo</th><th>State Street production target</th></tr></thead>
+      <tbody>
+        <tr><td>Anthropic SDK + Claude Sonnet 4.6</td><td>Microsoft Copilot Studio + Azure OpenAI (gpt-4o)</td></tr>
+        <tr><td>BM25 over markdown corpus</td><td>Azure AI Search / SharePoint Search on governance KB</td></tr>
+        <tr><td>FastAPI + Pydantic backend</td><td>ServiceNow workflow + Azure Function via Power Automate</td></tr>
+        <tr><td>This single-page UI</td><td>ServiceNow service portal / Power Apps canvas</td></tr>
+        <tr><td>JSONL traces</td><td>Splunk + Azure Monitor</td></tr>
+        <tr><td>Synthetic ATL corpus</td><td>Flexera ITAM data + SharePoint ATL library</td></tr>
+        <tr><td>YAML eval suite + GitHub Actions</td><td>Same — governance for the governance tool</td></tr>
+        <tr><td>Visitor-notify webhook</td><td>Power Automate flow → Outlook / Teams</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>ATO Copilot v0.1.0 · <span id="footer-mode">…</span></span>
+    <span>
+      <a href="/healthz" target="_blank">/healthz</a> ·
+      <a href="/api" target="_blank">/api</a> ·
+      <a href="/docs" target="_blank">/docs</a>
+    </span>
+  </div>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

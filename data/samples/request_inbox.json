@@ -1,0 +1,37 @@
+[
+  {
+    "request_id": "NTAP-2026-0301",
+    "submitted_by": "M. Chen (Custody Reporting Platform)",
+    "business_unit": "Investment Services",
+    "date": "2026-05-26",
+    "description": "We want to upgrade our existing reporting database from PostgreSQL 14 to 16 on AWS RDS for a new customer-facing reconciliation dashboard. Internal data only, no PII or client funds movement, deployed in approved VPC. Multi-AZ already enabled. Asking whether this needs a fresh ATO or inherits the existing one."
+  },
+  {
+    "request_id": "NTAP-2026-0302",
+    "submitted_by": "P. Singh (Client Onboarding)",
+    "business_unit": "Client Services",
+    "date": "2026-05-26",
+    "description": "Proposal: build a KYC document summarization tool using Azure OpenAI gpt-4o. Application is internal-facing for our KYC analyst team (not client-facing). Documents contain client PII. Plan to deploy via Azure Private Endpoint with DLP scanning on inbound text. Need ATO guidance and SLA for go-live in Q3."
+  },
+  {
+    "request_id": "NTAP-2026-0303",
+    "submitted_by": "R. Tanaka (Streaming Platform)",
+    "business_unit": "Technology",
+    "date": "2026-05-27",
+    "description": "We're proposing Confluent Cloud as a managed Kafka alternative for our event-streaming workloads to avoid AWS MSK capacity-management overhead. The workload carries client transaction confirmations (in-flight client funds messages). Internal infra team has been running a PoC."
+  },
+  {
+    "request_id": "NTAP-2026-0304",
+    "submitted_by": "L. Garcia (Public Web)",
+    "business_unit": "Marketing Technology",
+    "date": "2026-05-27",
+    "description": "Building a new public marketing microsite for a campaign launch. 3-tier app on ECS Fargate, no client login, no PII collected — just lead-capture form (name + email + investor type). Wants to use PostgreSQL on RDS for the leads table. Public-facing. Behind WAF. ARB review needed?"
+  },
+  {
+    "request_id": "NTAP-2026-0305",
+    "submitted_by": "J. Reilly (AI Platform)",
+    "business_unit": "Technology",
+    "date": "2026-05-28",
+    "description": "Team wants to spin up a self-hosted Llama 3 70B on GPU EC2 instances for an internal research project on synthetic data generation. No customer data involved. No client funds. Internal-only access via VPN. Asking for fast-track ATO given the experimental nature."
+  }
+]
