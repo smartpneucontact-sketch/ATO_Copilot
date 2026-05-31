@@ -198,7 +198,8 @@ def build() -> Path:
         primary_url="https://ato-copilot.up.railway.app",
         primary_display="ato-copilot.up.railway.app",
         sub_lines=[
-            ("Source code", "github.com/[your-handle]/ato-copilot", "https://github.com/"),
+            ("Source code", "github.com/smartpneucontact-sketch/ATO_Copilot",
+             "https://github.com/smartpneucontact-sketch/ATO_Copilot"),
             ("Model", "Anthropic Claude Sonnet 4.6  ·  ~$0.07 per request", None),
         ],
     )

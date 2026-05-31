@@ -145,7 +145,8 @@ def build() -> Path:
                    "ATO Copilot — AI Triage for ATO/NTAP Governance Workflows",
                    "2026",
                    [
-                       ("github.com/[your-handle]/ato-copilot", "https://github.com/"),
+                       ("github.com/smartpneucontact-sketch/ATO_Copilot",
+                        "https://github.com/smartpneucontact-sketch/ATO_Copilot"),
                    ])
     bullets(pdf, [
         "End-to-end AI workflow tool: free-text NTAP request goes in, structured ATO package comes "
