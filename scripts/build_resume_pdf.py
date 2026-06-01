@@ -196,8 +196,8 @@ def build() -> Path:
                 "Data Engineer")
     bullets(pdf, [
         "Shipped a tool-wear classifier (CNN, 82% accuracy) into TRUMPF Group's next-generation "
-        "punching machines; co-authored \"Data-Driven Tool Wear Classification with a CNN in "
-        "Punching Machines\" (Feb 2020). Production deployment with the full QA / approval cycle.",
+        "punching machines; co-authored a peer-reviewed publication on CNN-based tool-wear "
+        "classification (Feb 2020). Production deployment with the full QA and approval cycle.",
         "Built a sensor-fusion IoT pipeline (force, distance, sound, lubrication) and an ML "
         "failure-prediction algorithm on Audi AG data — connecting operational telemetry into "
         "an actionable signals layer, the data-architecture pattern State Street's JD asks for.",
