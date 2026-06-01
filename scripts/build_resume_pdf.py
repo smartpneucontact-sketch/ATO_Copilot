@@ -163,23 +163,6 @@ def build() -> Path:
         "rendering of every output field, Railway deploy ready.",
     ])
 
-    # Also list sister projects briefly
-    project_header(pdf,
-                   "Site Copilot & Case Pilot — Sister AI-Workflow Demos",
-                   "2026",
-                   [
-                       ("github.com/smartpneucontact-sketch/Sufflk",
-                        "https://github.com/smartpneucontact-sketch/Sufflk"),
-                       ("github.com/smartpneucontact-sketch/Scaffold",
-                        "https://github.com/smartpneucontact-sketch/Scaffold"),
-                   ])
-    bullets(pdf, [
-        "Same agent pattern applied to different regulated domains: construction RFI / Daily Report "
-        "triage (Site Copilot) and surgical case intake with implant configuration + compliance "
-        "checks (Case Pilot). Reinforces that the workflow-automation pattern transfers cleanly — "
-        "swap the corpus, swap the prompt, ship a new agent in days.",
-    ])
-
     # Experience
     section(pdf, "Professional Experience")
 
@@ -227,25 +210,45 @@ def build() -> Path:
         "paper-to-digital pattern.",
     ])
 
-    # Skills — Microsoft / governance first ordering for State Street
+    # Skills — Microsoft / governance / AI first ordering for State Street
     section(pdf, "Technical Skills")
-    skills_row(pdf, "Process Automation & AI",
-               "Microsoft Copilot-style AI workflow design, Agentic RAG, LLM tool-use, RPA-shaped "
-               "thinking, requirements engineering, SDLC + V&V, ITIL processes")
+    skills_row(pdf, "AI Coding Assistants",
+               "Claude Code (deep proficiency — shipping production agentic systems with it), "
+               "GitHub Copilot, Cursor, Devin AI awareness; AI-pair-programming workflows, "
+               "prompt-driven development, structured tool-use design")
+    skills_row(pdf, "LLMs & Agentic AI",
+               "Anthropic Claude (Opus / Sonnet / Haiku), OpenAI GPT-4o family, Azure OpenAI, "
+               "AWS Bedrock; Agentic RAG, multi-tool agent loops, ReAct pattern, structured "
+               "outputs (JSON Schema), function / tool calling, multi-agent orchestration, "
+               "prompt engineering")
+    skills_row(pdf, "RAG, Vector Stores & Embeddings",
+               "Hybrid retrieval (BM25 + dense, Reciprocal Rank Fusion), chunking strategies "
+               "(semantic, heading-based, sliding-window), citation grounding, retrieval eval "
+               "(context precision, faithfulness, answer relevancy); Chroma, OpenSearch kNN, "
+               "Azure AI Search, Pinecone awareness; OpenAI / Voyage / Cohere embeddings")
+    skills_row(pdf, "LLMOps",
+               "JSONL tracing (run_id / span / token / cost), eval-gated CI with YAML test cases + "
+               "scorer functions, drift detection (rolling distribution monitors on response "
+               "length / citation count / escalation rate), prompt versioning, prompt-injection "
+               "red-teaming, cost & latency monitoring per agent run")
+    skills_row(pdf, "Microsoft Copilot stack",
+               "Microsoft Copilot Studio architecture, GitHub Copilot Enterprise, Microsoft 365 "
+               "Copilot, Power Platform AI Builder, Power Apps + Power Automate (applied via "
+               "prototype), Dataverse-shaped integration")
     skills_row(pdf, "Microsoft / Azure",
                "Azure DevOps Engineer Expert (AZ-400), Azure Administrator (AZ-204), Azure "
-               "Fundamentals (AZ-900), Azure Data Factory, Power Platform-shaped architecture "
-               "(Power Apps, Power Automate, Copilot Studio applied via prototype), Active Directory")
+               "Fundamentals (AZ-900), Azure Data Factory, Active Directory, custom connector "
+               "design")
     skills_row(pdf, "Governance & Risk",
-               "Reference architecture review, security control frameworks (NIST 800-53 mapping in "
-               "prototype), audit-readiness artifacts, regulated-industry process discipline "
-               "(defense, automotive)")
-    skills_row(pdf, "Data & Integration",
-               "ETL / ELT design, REST APIs, sensor-fusion pipelines, vector stores, hybrid search "
-               "(BM25 + dense), Azure AI Search-shaped retrieval, SQL")
-    skills_row(pdf, "Engineering",
+               "Reference architecture review, NIST 800-53 control mapping, audit-readiness "
+               "artifacts, security risk processes, ITIL processes, regulated-industry V&V "
+               "discipline (defense, automotive)")
+    skills_row(pdf, "Engineering & Data",
                "Python (expert), FastAPI, C/C++, Docker, Kubernetes, Terraform, GitHub Actions, "
-               "AWS, Altium / PCB design, SolidWorks, Simulink")
+               "AWS, SQL, ETL / ELT design, REST APIs, sensor-fusion pipelines")
+    skills_row(pdf, "Classical ML & Computer Vision",
+               "PyTorch, HuggingFace Transformers, YOLO, ResNet-style CNNs, CUDA, edge inference, "
+               "model quantization (autonomous-system production deployment)")
 
     # Certifications
     section(pdf, "Certifications")
